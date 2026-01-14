@@ -42,7 +42,7 @@ Write-Host "✅ Configuration looks good!" -ForegroundColor Green
 Write-Host ""
 Write-Host "Starting servers..." -ForegroundColor Yellow
 Write-Host "Backend: http://localhost:5000" -ForegroundColor Cyan
-Write-Host "Frontend: http://localhost:3000" -ForegroundColor Cyan
+Write-Host "Frontend: http://localhost:3030" -ForegroundColor Cyan
 Write-Host ""
 Write-Host "Press Ctrl+C to stop all servers" -ForegroundColor Yellow
 Write-Host ""
@@ -58,7 +58,7 @@ Start-Process pwsh -ArgumentList "-NoExit", "-Command", "cd '$PWD\frontend'; yar
 
 Write-Host "✅ Servers started!" -ForegroundColor Green
 Write-Host ""
-Write-Host "Open your browser to: http://localhost:3000" -ForegroundColor Cyan
+Write-Host "Open your browser to: http://localhost:3030" -ForegroundColor Cyan
 Write-Host ""
 Write-Host "Test Card Details:" -ForegroundColor Yellow
 Write-Host "  Card: 4084084084084081" -ForegroundColor White

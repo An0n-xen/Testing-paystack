@@ -108,7 +108,7 @@ docker-compose down -v
 
 ### URLs
 
-- **Frontend**: http://localhost:3000
+- **Frontend**: http://localhost:3030
 - **Backend API**: http://localhost:5000
 - **Health Check**: http://localhost:5000/health
 
@@ -204,7 +204,7 @@ docker-compose up --build
 ```
 
 ### Step 3: Test!
-1. Open http://localhost:3000
+1. Open http://localhost:3030
 2. Enter email and amount
 3. Click "Pay Now"
 4. Use test card details
@@ -273,7 +273,7 @@ Your Paystack payment testing application is ready to use anywhere!
 **Next steps:**
 1. Add your Paystack API keys
 2. Run `docker-compose up --build`
-3. Test payments at http://localhost:3000
+3. Test payments at http://localhost:3030
 4. Deploy to your preferred platform!
 
 Happy testing! 💳✨

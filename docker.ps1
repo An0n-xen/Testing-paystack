@@ -50,7 +50,7 @@ switch ($choice) {
         Write-Host "🚀 Starting application in background..." -ForegroundColor Green
         docker-compose up -d
         Write-Host "✅ Application started!" -ForegroundColor Green
-        Write-Host "Frontend: http://localhost:3000" -ForegroundColor Cyan
+        Write-Host "Frontend: http://localhost:3030" -ForegroundColor Cyan
         Write-Host "Backend: http://localhost:5000" -ForegroundColor Cyan
         Write-Host ""
         Write-Host "View logs: docker-compose logs -f" -ForegroundColor Yellow

@@ -50,7 +50,7 @@ case $choice in
         echo "🚀 Starting application in background..."
         docker-compose up -d
         echo "✅ Application started!"
-        echo "Frontend: http://localhost:3000"
+        echo "Frontend: http://localhost:3030"
         echo "Backend: http://localhost:5000"
         echo ""
         echo "View logs: docker-compose logs -f"

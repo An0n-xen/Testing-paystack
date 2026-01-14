@@ -36,7 +36,7 @@ A simple application to test Paystack payment integration with Next.js frontend 
    ```bash
    docker-compose up --build
    ```
-4. Open `http://localhost:3000` in your browser
+4. Open `http://localhost:3030` in your browser
 5. Use test card: `4084084084084081` | CVV: `408` | PIN: `0000` | OTP: `123456`
 
 To stop the containers:
@@ -51,7 +51,7 @@ docker-compose down
    ```powershell
    .\start.ps1
    ```
-3. Open `http://localhost:3000` in your browser
+3. Open `http://localhost:3030` in your browser
 4. Use test card: `4084084084084081` | CVV: `408` | PIN: `0000` | OTP: `123456`
 
 ## 🔧 Setup Instructions
@@ -110,11 +110,11 @@ Start the frontend development server:
 yarn dev
 ```
 
-The frontend will run on `http://localhost:3000`
+The frontend will run on `http://localhost:3030`
 
 ## 🧪 Testing the Application
 
-1. Open your browser and navigate to `http://localhost:3000`
+1. Open your browser and navigate to `http://localhost:3030`
 2. Fill in the payment form:
    - **Email**: Any valid email address
    - **Amount**: Any amount in GHS (e.g., 10.00)
@@ -241,7 +241,7 @@ Health check endpoint
 - Verify `.env` file exists and contains valid keys
 
 ### Frontend won't start
-- Check if port 3000 is available
+- Check if port 3030 is available
 - Verify `.env.local` file exists
 - Run `yarn install` again
 
@@ -257,7 +257,7 @@ Health check endpoint
 
 ### Docker containers won't start
 - Ensure Docker Desktop is running
-- Check if ports 3000 and 5000 are available
+- Check if ports 3030 and 5000 are available
 - Verify `.env` files exist in both backend and frontend directories
 - Try rebuilding: `docker-compose up --build --force-recreate`
 - Check container logs: `docker-compose logs backend` or `docker-compose logs frontend`
