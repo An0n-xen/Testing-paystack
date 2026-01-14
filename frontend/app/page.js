@@ -11,7 +11,6 @@ export default function Home() {
   const [error, setError] = useState('');
 
   const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
-  const PAYSTACK_PUBLIC_KEY = process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY || '';
 
   const handlePayment = async (e) => {
     e.preventDefault();
@@ -25,11 +24,6 @@ export default function Home() {
 
     if (isNaN(amount) || parseFloat(amount) <= 0) {
       setError('Please enter a valid amount');
-      return;
-    }
-
-    if (!PAYSTACK_PUBLIC_KEY) {
-      setError('Paystack public key is not configured');
       return;
     }
 
