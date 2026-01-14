@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: paystack-backend
+    ports:
+      - "5000:5000"
+    environment:
+      - PORT=5000
+      - PAYSTACK_SECRET_KEY=${PAYSTACK_SECRET_KEY}
+    restart: unless-stopped
+    networks:
+      - paystack-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        - NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY=${NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY}
+        - NEXT_PUBLIC_API_URL=http://localhost:5000
+    container_name: paystack-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY=${NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY}
+      - NEXT_PUBLIC_API_URL=http://localhost:5000
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - paystack-network
+
+networks:
+  paystack-network:
+    driver: bridge

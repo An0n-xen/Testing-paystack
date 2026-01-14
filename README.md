@@ -13,11 +13,38 @@ A simple application to test Paystack payment integration with Next.js frontend 
 
 ## 📋 Prerequisites
 
+**For Docker deployment (Recommended):**
+- Docker Desktop or Docker Engine
+- Docker Compose
+
+**For local development:**
 - Node.js (v18 or higher)
 - Yarn package manager
+
+**For both:**
 - Paystack account ([Sign up here](https://paystack.com))
 
 ## ⚡ Quick Start
+
+### Option 1: Docker (Recommended for portability)
+
+1. Ensure Docker and Docker Compose are installed
+2. Add your Paystack API keys to the `.env` files:
+   - `backend/.env` - Add your secret key
+   - `frontend/.env.local` - Add your public key
+3. Run with Docker Compose:
+   ```bash
+   docker-compose up --build
+   ```
+4. Open `http://localhost:3000` in your browser
+5. Use test card: `4084084084084081` | CVV: `408` | PIN: `0000` | OTP: `123456`
+
+To stop the containers:
+```bash
+docker-compose down
+```
+
+### Option 2: Local Development
 
 1. Add your Paystack API keys to the `.env` files (see setup instructions below)
 2. Run the startup script:
@@ -108,6 +135,8 @@ Testing-paystack/
 ├── backend/
 │   ├── server.js           # Express server with Paystack endpoints
 │   ├── package.json        # Backend dependencies
+│   ├── Dockerfile          # Backend Docker image
+│   ├── .dockerignore       # Docker ignore file
 │   ├── .env.example        # Environment variables template
 │   └── .gitignore
 │
@@ -119,9 +148,14 @@ Testing-paystack/
 │   │   ├── layout.js       # Root layout
 │   │   └── globals.css     # Global styles
 │   ├── package.json        # Frontend dependencies
+│   ├── Dockerfile          # Frontend Docker image
+│   ├── .dockerignore       # Docker ignore file
 │   ├── .env.local.example  # Environment variables template
 │   └── .gitignore
 │
+├── docker-compose.yml      # Docker Compose configuration
+├── .dockerignore           # Root Docker ignore file
+├── start.ps1               # PowerShell startup script
 └── README.md
 ```
 
@@ -197,6 +231,8 @@ Health check endpoint
 - [Paystack Documentation](https://paystack.com/docs)
 - [Next.js Documentation](https://nextjs.org/docs)
 - [Express.js Documentation](https://expressjs.com)
+- [Docker Deployment Guide](./DOCKER.md)
+- [Docker Setup Summary](./DOCKER_SETUP.md)
 
 ## 🐛 Troubleshooting
 
@@ -218,6 +254,18 @@ Health check endpoint
 - Check if the reference parameter is passed correctly
 - Verify network connectivity
 - Check Paystack dashboard for transaction status
+
+### Docker containers won't start
+- Ensure Docker Desktop is running
+- Check if ports 3000 and 5000 are available
+- Verify `.env` files exist in both backend and frontend directories
+- Try rebuilding: `docker-compose up --build --force-recreate`
+- Check container logs: `docker-compose logs backend` or `docker-compose logs frontend`
+
+### Docker build fails
+- Clear Docker cache: `docker system prune -a`
+- Ensure `yarn.lock` files exist in both directories
+- Check Dockerfile syntax
 
 ## 📝 License
 

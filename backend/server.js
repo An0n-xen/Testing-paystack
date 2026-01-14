@@ -2,6 +2,8 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const axios = require('axios');
+const fs = require('fs');
+const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -10,8 +12,31 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
+// Function to get secret key (supports both env var and Docker secrets)
+function getPaystackSecretKey() {
+  //Try Docker secret first (for production)
+  const secretPath = '/run/secrets/paystack_secret_key';
+  try {
+    if (fs.existsSync(secretPath) && fs.statSync(secretPath).isFile()) {
+      console.log('Using Paystack secret key from Docker secret');
+      return fs.readFileSync(secretPath, 'utf8').trim();
+    }
+  } catch (err) {
+    // Docker secret not available, fall through to env var
+    console.log('Docker secret not available, using environment variable');
+  }
+  
+  // Fall back to environment variable (for development)
+  if (process.env.PAYSTACK_SECRET_KEY) {
+    console.log('Using Paystack secret key from environment variable');
+    return process.env.PAYSTACK_SECRET_KEY;
+  }
+  
+  throw new Error('PAYSTACK_SECRET_KEY not found in environment or Docker secrets');
+}
+
 // Paystack configuration
-const PAYSTACK_SECRET_KEY = process.env.PAYSTACK_SECRET_KEY;
+const PAYSTACK_SECRET_KEY = getPaystackSecretKey();
 const PAYSTACK_BASE_URL = 'https://api.paystack.co';
 
 // Initialize payment endpoint
