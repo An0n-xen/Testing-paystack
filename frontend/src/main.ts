@@ -1,7 +1,7 @@
 import './style.css';
 
 // Configuration - uses Vite environment variables
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api/payment';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://13.41.246.221:3000/api/payment';
 
 // Extend Window interface for Paystack
 declare global {
