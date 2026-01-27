@@ -7,7 +7,7 @@ import cors from 'cors';
 import paymentRoutes from './routes/payment.routes';
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = Number(process.env.PORT) || 3000;
 
 // Middleware
 app.use(cors({
@@ -27,7 +27,7 @@ app.get('/health', (req, res) => {
 app.use('/api/payment', paymentRoutes);
 
 // Start server
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0',() => {
   console.log('');
   console.log('🚀 ═══════════════════════════════════════════════════');
   console.log('   PAYSTACK PAYMENT SERVER');
