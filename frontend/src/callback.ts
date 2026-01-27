@@ -1,7 +1,7 @@
 import './style.css';
 
 // Configuration - uses Vite environment variable
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api/payment';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://13.41.246.221:3000/api/payment';
 
 interface ApiResponse<T> {
   success: boolean;
@@ -88,6 +88,7 @@ function showResult(isSuccess: boolean, title: string, message: string, details?
 async function verifyPayment(reference: string): Promise<VerifyData> {
   const response = await fetch(`${API_BASE_URL}/verify/${encodeURIComponent(reference)}`);
   const data: ApiResponse<VerifyData> = await response.json();
+  console.log(API_BASE_URL);
   
   if (!data.success || !data.data) {
     throw new Error(data.message || 'Failed to verify payment');

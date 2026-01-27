@@ -188,6 +188,7 @@ async function initializePopupPayment(email: string, amount: number): Promise<In
   });
   
   const data: ApiResponse<InitializePopupData> = await response.json();
+  console.log(API_BASE_URL);
   
   if (!data.success || !data.data) {
     throw new Error(data.message || 'Failed to initialize payment');
@@ -221,6 +222,7 @@ async function initializeRedirectPayment(email: string, amount: number): Promise
     }),
   });
   
+  console.log(API_BASE_URL);
   const data: ApiResponse<InitializeRedirectData> = await response.json();
   
   if (!data.success || !data.data) {
