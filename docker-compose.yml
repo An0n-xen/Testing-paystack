@@ -19,7 +19,7 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
       args:
-        - VITE_API_BASE_URL=http://localhost:3000/api/payment
+        - VITE_API_BASE_URL=http://13.41.246.221:3000/api/payment
         - VITE_PAYSTACK_PUBLIC_KEY=${VITE_PAYSTACK_PUBLIC_KEY}
     container_name: paystack-frontend
     ports:
