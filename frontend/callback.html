@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Payment verification - Confirming your transaction" />
+    <title>Payment Verification | PayFlow</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="app">
+      <!-- Background Effects -->
+      <div class="bg-gradient"></div>
+      <div class="bg-grid"></div>
+      <div class="floating-orb orb-1"></div>
+      <div class="floating-orb orb-2"></div>
+      
+      <!-- Main Content -->
+      <main class="container">
+        <header class="header">
+          <div class="logo">
+            <svg class="logo-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>PayFlow</span>
+          </div>
+        </header>
+
+        <!-- Loading State -->
+        <div id="loading-card" class="status-card">
+          <div class="spinner-container">
+            <div class="spinner large"></div>
+          </div>
+          <h2>Verifying Payment</h2>
+          <p>Please wait while we confirm your transaction...</p>
+        </div>
+
+        <!-- Result State -->
+        <div id="result-card" class="status-card hidden">
+          <div id="status-icon" class="status-icon"></div>
+          <h2 id="status-title"></h2>
+          <p id="status-message"></p>
+          <div id="transaction-details" class="transaction-details hidden"></div>
+          <a href="/" class="btn btn-primary">
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M19 12H5M12 19L5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Back to Home</span>
+          </a>
+        </div>
+      </main>
+    </div>
+    <script type="module" src="/src/callback.ts"></script>
+  </body>
+</html>
